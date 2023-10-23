@@ -10,6 +10,7 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import { createIssueSchema } from '@/app/validationschema';
 import { z } from 'zod';
 import ErrorMessage from '@/app/components/ErrorMessage';
+import Spinner from '@/app/components/Spinner';
 
 // interface NewIssueForm {
 //     title : string,
@@ -20,6 +21,7 @@ type NewIssueForm = z.infer<typeof createIssueSchema>
 const NewIssuePage = () => {
 
     const [error, setError] = useState('');
+    const [isSubmiting, setIsSubmiting] = useState(false);
     const router = useRouter();
     const {register, control, handleSubmit,formState : {errors}} = useForm<NewIssueForm>({
         resolver: zodResolver(createIssueSchema)
@@ -38,12 +40,15 @@ const NewIssuePage = () => {
         <form className=' space-y-3' 
         onSubmit={handleSubmit( async (data) => {
             try {
+                setIsSubmiting(true);
                 await axios.post('/api/issues',data);
                 router.push('/issues');
                 
             } catch (error) {
+                setIsSubmiting(true);
                 setError('An unexpected error occured.')
             }
+            
         })}>
         <TextFieldRoot>
             <TextField.Input placeholder='Enter issue title' {...register('title')}/>
@@ -51,7 +56,7 @@ const NewIssuePage = () => {
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
         <Controller name='description' control={control} render={({field}) => <SimpleMDE placeholder='Description' {...field}/> } />
         <ErrorMessage>{errors.title?.message}</ErrorMessage>
-        <Button>Submit New Issue</Button>
+        <Button disabled={isSubmiting}>Submit New Issue{isSubmiting && <Spinner/>}</Button>
     </form>
     </div>
    
