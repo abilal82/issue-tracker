@@ -5,12 +5,13 @@ import "easymde/dist/easymde.min.css";
 import { useForm , Controller} from "react-hook-form";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import {zodResolver} from '@hookform/resolvers/zod'
 import { createIssueSchema } from '@/app/validationschema';
 import { z } from 'zod';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import Spinner from '@/app/components/Spinner';
+import delay from 'delay';
 
 // interface NewIssueForm {
 //     title : string,
@@ -18,7 +19,7 @@ import Spinner from '@/app/components/Spinner';
 // }
 
 type NewIssueForm = z.infer<typeof createIssueSchema>
-const NewIssuePage = () => {
+const NewIssuePage =  () => {
 
     const [error, setError] = useState('');
     const [isSubmiting, setIsSubmiting] = useState(false);
@@ -26,6 +27,9 @@ const NewIssuePage = () => {
     const {register, control, handleSubmit,formState : {errors}} = useForm<NewIssueForm>({
         resolver: zodResolver(createIssueSchema)
     });
+
+     delay(3000).then(data => console.log(data));
+
     const onSubmit = handleSubmit( async (data) => {
         try {
             setIsSubmiting(true);
@@ -41,6 +45,9 @@ const NewIssuePage = () => {
     
   return (
 
+   
+
+    
     <div className='max-w-xl'>
 
         {error && 
@@ -59,8 +66,10 @@ const NewIssuePage = () => {
         <Button disabled={isSubmiting}>Submit New Issue{isSubmiting && <Spinner/>}</Button>
     </form>
     </div>
+
    
   )
 }
+
 
 export default NewIssuePage

@@ -5,7 +5,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from 'react-loading-skeleton'
 import IssueActions from './IssueActions'
 
-const loading = () => {
+
+const LoadingIssue = () => {
     
     const issues = [1,2,3,4,5];
 
@@ -38,4 +39,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default LoadingIssue
