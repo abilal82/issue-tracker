@@ -21,7 +21,6 @@ import delay from 'delay';
 type NewIssueForm = z.infer<typeof createIssueSchema>
 const NewIssuePage =  () => {
 
-     delay(1000).then();
     const [error, setError] = useState('');
     const [isSubmiting, setIsSubmiting] = useState(false);
     const router = useRouter();
@@ -29,28 +28,23 @@ const NewIssuePage =  () => {
         resolver: zodResolver(createIssueSchema)
     });
 
-     delay(3000).then(data => console.log(data));
+      delay(6000).then();
 
     const onSubmit = handleSubmit( async (data) => {
         try {
             setIsSubmiting(true);
             await axios.post('/api/issues',data);
             router.push('/issues');
-            
         } catch (error) {
             setIsSubmiting(true);
             setError('An unexpected error occured.')
         }
         
-    })
+    });
+
     
   return (
-
-   
-
-    
     <div className='max-w-xl'>
-
         {error && 
         <CalloutRoot color='red' className='mb-5' highContrast role="alert" size='2'>
             <Callout.Text>{error}</Callout.Text>

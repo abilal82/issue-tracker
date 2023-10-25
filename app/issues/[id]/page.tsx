@@ -14,7 +14,7 @@ type Props =  {
 
 const IssueDetialPage = async ({params}:Props) => {
 
-  await delay(500);
+  await delay(2000);
 
     
     const issue = await prisma.issue.findUnique({

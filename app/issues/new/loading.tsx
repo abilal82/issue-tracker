@@ -1,10 +1,16 @@
-import delay from "delay"
+import { Box } from "@radix-ui/themes";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 
-const LoadingNewIssue =async () => {
+const LoadingNewIssue = () => {
 
   return (
-    <div><p>🌀loading...</p></div>
+    <Box className="max-w-xl">
+      <p>lodaing</p>
+      <Skeleton />
+      <Skeleton height='20rem'/>
+    </Box>
   )
 }
 
