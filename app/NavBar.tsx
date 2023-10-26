@@ -11,7 +11,7 @@ const NavBar = () => {
   const currentpath = usePathname();
   const links = [
     { href : '/', label: 'Dashboard'},
-    { href : '/issues' , label : 'issues'}
+    { href : '/issues/list' , label : 'issues'}
   ];
 
   return (
