@@ -14,7 +14,7 @@ export async function POST(request : NextRequest) {
         data: {title : body.title, description: body.description, status: 'CLOSED'}
     });
 
-    return NextResponse.json(newIssue, {status: 201});
+    return NextResponse.json(newIssue, {status: 200});
 }
 
 
