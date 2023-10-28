@@ -1,5 +1,7 @@
 // This hook is dependent on browser APIs. So, we have to convert this component into client component.
 "use client";
+
+import { Skeleton } from '@/app/components'
 import { Avatar, Box, Container, DropdownMenu, Flex } from "@radix-ui/themes";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
@@ -52,7 +54,7 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width='1.75rem' height='1.75rem' circle={true}/>
   if (status === "unauthenticated")
     return <Link href="/api/auth/signin" className="nav-link">Login</Link>;
 
