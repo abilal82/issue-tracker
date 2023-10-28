@@ -7,3 +7,4 @@ Thirdparty Helper Libararies
 3) npm i react-markdown@8.0.7
 4) npm install -D @tailwindcss/typography
 5) npm i @radix-ui/react-icons
+6) npm i  @next-auth/prisma-adapter@1.0.7

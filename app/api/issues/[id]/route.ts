@@ -1,6 +1,5 @@
 import { issueSchema } from "@/app/validationschema";
 import prisma from "@/prisma/client";
-import delay from "delay";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -15,6 +14,7 @@ export async function PATCH(request : NextRequest, {params} : {params : {id : st
     if(!validatedResult.success) 
        return NextResponse.json(validatedResult.error.format(),{status : 400});
      
+    
     const issue = await prisma.issue.findUnique({
         where : { id: parseInt(params.id)}
     });
