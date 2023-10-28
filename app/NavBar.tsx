@@ -5,7 +5,15 @@ import React from "react";
 import { AiFillBug } from "react-icons/ai";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
-import { Box, Container, Flex } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  DropdownMenu,
+  Flex,
+} from "@radix-ui/themes";
+import { CaretDownIcon } from "@radix-ui/react-icons";
 
 const NavBar = () => {
   // This hook is dependent on browser APIs. So, we have to convert this component into client component.
@@ -49,7 +57,17 @@ const NavBar = () => {
 
           <Box>
             {status === "authenticated" && (
-              <Link href="/api/auth/signout">Log out</Link>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <Avatar src={session.user!.image!} fallback="U"  color="blue" variant="soft" radius="full" size='2'/>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content>
+                  <DropdownMenu.Label>{session.user!.name}</DropdownMenu.Label>
+                  <DropdownMenu.Label>{session.user!.email}</DropdownMenu.Label>
+                  <DropdownMenu.Separator />
+                  <DropdownMenu.Item shortcut="⌘ E"><Link href="/api/auth/signout">Logout</Link></DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
             )}
             {status === "unauthenticated" && (
               <Link href="/api/auth/signin">Login</Link>
