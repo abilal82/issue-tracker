@@ -1,13 +1,13 @@
 'use client'
 import prisma from "@/prisma/client";
-import { User } from "@prisma/client";
+import { Issue, User } from "@prisma/client";
 import { Select } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 
-function AssigneeSelect() {
+function AssigneeSelect({issue} : {issue : Issue}) {
 
     const {data: users, error, isLoading} = useQuery<User[]>({
         queryKey : ['users'],
@@ -30,14 +30,16 @@ function AssigneeSelect() {
     // },[])
     
   return (
-    <Select.Root defaultValue="apple">
+    <Select.Root  defaultValue={issue.assignedToUserId || ""} onValueChange={(userId) => {
+      axios.patch('/api/issues/'+ issue.id,{assignedToUserId : userId || null})
+    }}>
       <Select.Trigger placeholder="Assign..." />
       <Select.Content>
         <Select.Group>
           <Select.Label>Suggestions</Select.Label>
+          <Select.Item value="">Unassigned</Select.Item>
           {users?.map(user => (
               <Select.Item key={user.id} value={user.id}>{user.email}</Select.Item>
-
           ))}
         </Select.Group>
       </Select.Content>

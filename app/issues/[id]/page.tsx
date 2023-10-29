@@ -33,7 +33,7 @@ const IssueDetialPage = async ({ params }: Props) => {
           <Flex direction="column" gap="4">
           <EditIssueButton issueId={issue.id}/>
           <DeleteIssueButton issueId={issue.id}/>
-          <AssigneeSelect/>
+          <AssigneeSelect issue={issue}/>
           </Flex>          
         </Box>}
       </Grid>
