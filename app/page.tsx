@@ -1,13 +1,13 @@
 import { PrismaClient } from '@prisma/client';
 import Image from 'next/image'
 import Pagination from './components/Pagination';
+import LatestIssues from './LatestIssues';
 
-export default function Home({searchParams} : {searchParams: {page : string}}) {
+export default function Home() {
 
-  const prisma = new PrismaClient();
   return (
    <main>
-    <Pagination itemCount={100} currentPage={parseInt(searchParams.page)} pageSize={20}/>
+      <LatestIssues/>
    </main>
   )
 }
