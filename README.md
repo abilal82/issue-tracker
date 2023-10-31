@@ -11,3 +11,4 @@ Thirdparty Helper Libararies
 7) npm i @radix-ui/themes@1.1.2
 8) npm i @tanstack/react-query@4.35.3
 9) npm install react-hot-toast
+10) npm i recharts@2.8.0
