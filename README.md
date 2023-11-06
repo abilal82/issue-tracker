@@ -7,7 +7,9 @@
 - MySQL
 - Tailwind RadixUI 
 
-[https://bilalaslamnet-dev-ed.develop.my.site.com//note-taking-app](https://trackmyissue.vercel.app/)
+
+[Go To Site](https://trackmyissue.vercel.app/)
+
 
 
 ![Screenshot 2023-11-06 224849](https://github.com/abilal82/issue-tracker/assets/46030291/afadaac0-1ea4-4f1a-aa01-db52c313fc8d)
