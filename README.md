@@ -1,6 +1,11 @@
-# Issue Trcaker Built in NextJS 
+# Issue Tracker Built in NextJS 
 
-## Note Taking App in Salesforce LWR App
+## Complete Tech Stack:
+
+- Typscript
+- Primsa ORM
+- MySQL
+- Tailwind RadixUI 
 
 [https://bilalaslamnet-dev-ed.develop.my.site.com//note-taking-app](https://trackmyissue.vercel.app/)
 
